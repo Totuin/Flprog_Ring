@@ -6,20 +6,25 @@ class FLProgAbstractRingVariable
 {
 public:
     bool isNeedSend() { return _isNeedSend; };
-    uint16_t index() { return _index; };
+    void isNeedSend(bool value) { _isNeedSend = value; };
+    uint32_t index() { return _index; };
+    virtual void setValueString(String value) { (void)value; };
+    virtual String valueString() { return ""; };
 
 protected:
     bool _isNeedSend = false;
-    uint16_t _index;
+    uint32_t _index;
 };
 
 class FLProgBoolRingVariable : public FLProgAbstractRingVariable
 {
 public:
-    FLProgBoolRingVariable(uint16_t index) { _index = index; };
+    FLProgBoolRingVariable(uint32_t index);
 
     bool value() { return _value; };
     void value(bool value);
+    virtual void setValueString(String value);
+    virtual String valueString();
 
 protected:
     bool _value;
