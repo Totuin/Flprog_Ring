@@ -6,7 +6,14 @@
 #######################################
 FLProgAbstractRingVariable	KEYWORD1
 FLProgBoolRingVariable	KEYWORD1
+FLProgByteRingVariable	KEYWORD1
+FLProgCharRingVariable	KEYWORD1
+FLProgFloatRingVariable	KEYWORD1
+FLProgIntegerRingVariable	KEYWORD1
+FLProgLongRingVariable	KEYWORD1
 FLProgRing	KEYWORD1
+FLProgStringRingVariable	KEYWORD1
+FLProgUnsignedLonRingVariable	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
