@@ -1,6 +1,7 @@
 #pragma once
 #include <Arduino.h>
 #include "flprogUtilites.h"
+#include "flprogUartBase.h"
 #include "utilites/flprogAbstractRingVariable.h"
 
 #define FLPROG_RING_WHITE_MODE 0
@@ -13,7 +14,7 @@
 class FLProgRing
 {
 public:
-    FLProgRing(uint8_t port, uint16_t readVariablesCount, uint16_t sendVariablesCount, uint32_t index);
+    FLProgRing(uint8_t port, uint16_t readVariablesCount, uint16_t sendVariablesCount, uint32_t index, FlprogAbstractUartExecutor *executor);
 
     void addReadVariable(FLProgAbstractRingVariable *variable);
     void addSendVariable(FLProgAbstractRingVariable *variable);
@@ -37,6 +38,7 @@ protected:
     int16_t nextSendVariableIndex();
 
     uint8_t _port = 0;
+    FlprogAbstractUartExecutor *_executor = 0;
     uint32_t _index;
     bool _isSingleMode = false;
     uint8_t _workMode = FLPROG_RING_WHITE_MODE;

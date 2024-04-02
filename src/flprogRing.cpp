@@ -1,9 +1,10 @@
 #include "flprogRing.h"
 
-FLProgRing::FLProgRing(uint8_t port, uint16_t readVariablesCount, uint16_t sendVariablesCount, uint32_t index)
+FLProgRing::FLProgRing(uint8_t port, uint16_t readVariablesCount, uint16_t sendVariablesCount, uint32_t index, FlprogAbstractUartExecutor *executor)
 {
     _port = port;
     _index = index;
+    _executor = executor;
     _readIitems = new FLProgAbstractRingVariable *[readVariablesCount];
     for (uint16_t i = 0; i < readVariablesCount; i++)
     {
@@ -56,13 +57,13 @@ void FLProgRing::addSendVariable(FLProgAbstractRingVariable *variable)
 
 void FLProgRing::readNextVariable()
 {
-    while (flprog::availableUart(_port) > 0)
+    while (_executor->availableUart(_port) > 0)
     {
         if (_workMode == FLPROG_RING_END_READ_VARIABLE_MODE)
         {
             break;
         }
-        analizeNextReadingyte(flprog::readUart(_port));
+        analizeNextReadingyte(_executor->readUart(_port));
     }
     if (_workMode == FLPROG_RING_END_READ_VARIABLE_MODE)
     {
@@ -81,13 +82,13 @@ void FLProgRing::readNextVariable()
 
 void FLProgRing::sendBuffer()
 {
-    flprog::writeUart(1, _port);
-    flprog::printUart(String(_tempSender), _port);
-    flprog::writeUart(2, _port);
-    flprog::printUart(String(_tempName), _port);
-    flprog::writeUart(3, _port);
-    flprog::printUart(_tempString, _port);
-    flprog::writeUart(4, _port);
+    _executor->writeUart(1, _port);
+    _executor->printUart(String(_tempSender), _port);
+    _executor->writeUart(2, _port);
+    _executor->printUart(String(_tempName), _port);
+    _executor->writeUart(3, _port);
+    _executor->printUart(_tempString, _port);
+    _executor->writeUart(4, _port);
 }
 
 void FLProgRing::checkBuffer()
@@ -189,7 +190,7 @@ void FLProgRing::pool()
         return;
     }
     _eventsCount = 0;
-    if (flprog::availableUart(_port))
+    if (_executor->availableUart(_port))
     {
         _workMode = FLPROG_RING_START_READ_VARIABLE_MODE;
         _tempString = "";
