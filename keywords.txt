@@ -1,0 +1,43 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+#######################################
+# # Datatypes (KEYWORD1)
+#######################################
+FLProgAbstractRingVariable	KEYWORD1
+FLProgBoolRingVariable	KEYWORD1
+FLProgByteRingVariable	KEYWORD1
+FLProgCharRingVariable	KEYWORD1
+FLProgFloatRingVariable	KEYWORD1
+FLProgIntegerRingVariable	KEYWORD1
+FLProgLongRingVariable	KEYWORD1
+FLProgRing	KEYWORD1
+FLProgStringRingVariable	KEYWORD1
+FLProgUnsignedLonRingVariable	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+addReadVariable	KEYWORD2
+addSendVariable	KEYWORD2
+getPort	KEYWORD2
+getSkippingEvents	KEYWORD2
+index	KEYWORD2
+isNeedSend	KEYWORD2
+isSingleMode	KEYWORD2
+pool	KEYWORD2
+setPort	KEYWORD2
+setSkippingEvents	KEYWORD2
+setValueString	KEYWORD2
+value	KEYWORD2
+valueString	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+FLPROG_RING_END_READ_VARIABLE_MODE	LITERAL1
+FLPROG_RING_READ_NAME_VARIABLE_MODE	LITERAL1
+FLPROG_RING_READ_SENDER_VARIABLE_MODE	LITERAL1
+FLPROG_RING_READ_VALUE_VARIABLE_MODE	LITERAL1
+FLPROG_RING_START_READ_VARIABLE_MODE	LITERAL1
+FLPROG_RING_WHITE_MODE	LITERAL1
