@@ -1,5 +1,4 @@
 #pragma once
-#include <Arduino.h>
 #include "flprogUtilites.h"
 #include "flprogUartBase.h"
 #include "utilites/flprogAbstractRingVariable.h"
